@@ -4,4 +4,8 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+Dir["app/tasks/**/*.{rake,rb}"].each do |file|
+  load file
+end
+
 MyMusicDatabase::Application.load_tasks

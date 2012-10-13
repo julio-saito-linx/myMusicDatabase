@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009160308) do
+ActiveRecord::Schema.define(:version => 20121013050401) do
 
   create_table "songs", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20121009160308) do
     t.integer  "length"
     t.integer  "bitrate"
     t.integer  "sample_rate"
+    t.string   "album"
   end
 
 end
