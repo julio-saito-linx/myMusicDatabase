@@ -8,3 +8,8 @@ spork --bootstrap
 
 heroku create --stack cedar
 git push heroku master
+
+
+taglib-ruby dependence
+=========================
+sudo apt-get install libtag1-dev
