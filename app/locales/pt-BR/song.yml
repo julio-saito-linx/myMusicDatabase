@@ -1,0 +1,9 @@
+pt-BR:
+  song:
+    tracknumber: "num"
+    title: "título"
+    artist: "artista"
+    length: "duração"
+    bitrate: "bitrate"
+    sample_rate: "samplerate"
+    filepath: "caminho"
