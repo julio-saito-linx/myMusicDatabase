@@ -6,6 +6,8 @@
   <%= t("search.about_my_search_html", :search => params[:q], :count => @songs.count)%>
 </p>
 
+<a class="stop" href="#">stop</a>
+
 <%= paginate @songs %>
 
 <%= render "song", :locals => {:songs => @songs} %>
