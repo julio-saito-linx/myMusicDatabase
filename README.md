@@ -27,3 +27,7 @@ sphinx
     # start sphinx from rake
     rake ts:index
     rake ts:rebuild
+
+drop all table and reindex all songs
+====================================
+    rake db:setup; rake songs; rake ts:index
