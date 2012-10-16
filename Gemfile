@@ -3,6 +3,8 @@ source :rubygems
 gem "rails", "3.2.8"
 gem "pg"
 gem "taglib-ruby"
+gem "paginate"
+gem "thinking-sphinx"
 
 group :assets do
   gem "sass-rails"

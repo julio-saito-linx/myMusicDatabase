@@ -1,7 +1,10 @@
-<h1>My Songs</h1>
+<h1><%= t("search.title_result")%></h1>
 
 <%= render("shared/search_form")%>
 
+<p>
+  <%= t("search.about_my_search_html", :search => params[:search], :count => @songs.count)%>
+</p>
 
 <table>
   <tr>

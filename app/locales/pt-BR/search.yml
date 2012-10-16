@@ -1,0 +1,5 @@
+pt-BR:
+  search:
+    title: "Busca"
+    title_result: "Resultado da busca"
+    about_my_search_html: "A busca para <strong>%{search}</strong> retornou %{count} itens encotrados"
