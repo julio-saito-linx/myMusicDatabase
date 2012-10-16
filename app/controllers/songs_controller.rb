@@ -4,6 +4,6 @@ class SongsController < ApplicationController
   end
 
   def search
-    @songs = Song.search(params[:search])
+    @songs = SongSearch.search(params)
   end
 end

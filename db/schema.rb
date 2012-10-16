@@ -11,19 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013050401) do
+ActiveRecord::Schema.define(:version => 20121016095632) do
 
   create_table "songs", :force => true do |t|
     t.string   "title"
     t.string   "artist"
     t.integer  "tracknumber"
-    t.string   "filepath",    :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "filepath",                      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "length"
     t.integer  "bitrate"
     t.integer  "sample_rate"
     t.string   "album"
+    t.boolean  "delta",       :default => true, :null => false
   end
 
 end
