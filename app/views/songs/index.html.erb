@@ -1,22 +1,8 @@
 <h1>My Songs</h1>
 
-<%= render("shared/search_form")%>
-
-
-<table>
-  <tr>
-    <th><%= t("song.tracknumber") %></th>
-    <th><%= t("song.title") %></th>
-    <th><%= t("song.artist") %></th>
-    <th><%= t("song.length") %></th>
-    <th><%= t("song.bitrate") %></th>
-    <th><%= t("song.sample_rate") %></th>
-    <th><%= t("song.filepath") %></th>
-  </tr>
-
-  <% iterate @songs do |song|%>
-    <%= render song %>
-  <% end %>
-</table>
+<%= render("shared/search_form") %>
 
 <%= paginate @songs %>
+
+<%= render "song", :locals => {:songs => @songs} %>
+

@@ -3,12 +3,16 @@
 
 require 'taglib'
 require 'find'
+require 'progress_bar'
+
 
 desc "get info from mp3 file"
 task :songs => :environment  do
 
-  mp3_file_paths = Dir.glob("/mnt/1001/0954/**/*.mp3")
+  mp3_file_paths = Dir.glob("/mnt/1001/**/*.mp3")
   puts "#{mp3_file_paths.length} files found"
+
+  bar = ProgressBar.new(mp3_file_paths.length)
 
   mp3_file_paths.each do |file_path|
     s = Song.new
@@ -22,10 +26,7 @@ task :songs => :environment  do
       s.title = tag.title   #=> "Wake Up"
       s.artist = tag.artist  #=> "Arcade Fire"
       s.album = tag.album   #=> "Funeral"
-      #s.artist = tag.year    #=> 2004
       s.tracknumber = tag.track   #=> 7
-      #s.artist = tag.genre   #=> "Indie Rock"
-      #s.artist = tag.comment #=> nil
 
       properties = fileref.audio_properties
       properties.length  #=> 335 (song length in seconds)
@@ -36,7 +37,7 @@ task :songs => :environment  do
     end  # File is automatically closed at block end
 
     s.save!
-    puts " -> #{s.filepath}"
+    bar.increment!
 
   end
 

@@ -5,6 +5,7 @@ gem "pg"
 gem "taglib-ruby"
 gem "paginate"
 gem "thinking-sphinx"
+gem "progress_bar"
 
 group :assets do
   gem "sass-rails"

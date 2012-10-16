@@ -3,23 +3,11 @@
 <%= render("shared/search_form")%>
 
 <p>
-  <%= t("search.about_my_search_html", :search => params[:search], :count => @songs.count)%>
+  <%= t("search.about_my_search_html", :search => params[:q], :count => @songs.count)%>
 </p>
 
-<table>
-  <tr>
-    <th><%= t("song.tracknumber") %></th>
-    <th><%= t("song.title") %></th>
-    <th><%= t("song.artist") %></th>
-    <th><%= t("song.length") %></th>
-    <th><%= t("song.bitrate") %></th>
-    <th><%= t("song.sample_rate") %></th>
-    <th><%= t("song.filepath") %></th>
-  </tr>
-
-  <% iterate @songs do |song|%>
-    <%= render song %>
-  <% end %>
-</table>
-
 <%= paginate @songs %>
+
+<%= render "song", :locals => {:songs => @songs} %>
+
+

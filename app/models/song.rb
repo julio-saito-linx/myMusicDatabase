@@ -12,7 +12,7 @@ class Song < ActiveRecord::Base
     
     # attributes
     has created_at, updated_at
-    set_property :delta => true
+    #set_property :delta => true
   end
 
 end
