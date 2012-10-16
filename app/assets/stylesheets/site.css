@@ -1,3 +1,8 @@
+table th, td{
+  padding: 5px;
+  border: #555 1px solid;
+}
+
 .paginate {
   background: #eee;
   border-radius: 5px;
