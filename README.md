@@ -1,14 +1,13 @@
-RailsTemplate: PG + Spork
+create pg super user
 =========================
-sudo -u postgres createuser -D -P superuser
+    sudo -u postgres createuser -D -P superuser
 
+
+PG + Spork
+=========================
     rails generate rspec:install
     guard init rspec
     spork --bootstrap
-
-    heroku create --stack cedar
-    git push heroku master
-
 
 taglib-ruby dependence
 =========================
@@ -31,3 +30,8 @@ sphinx
 drop all table and reindex all songs
 ====================================
     rake db:setup; rake songs; rake ts:index
+
+heroku
+=========================
+    heroku create --stack cedar
+    git push heroku master
