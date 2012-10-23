@@ -11,6 +11,13 @@ desc "creates a songs bulk file for import"
 task "songs:createbulk" => :environment  do
   MP3_FILE_PATHS = "/tmp/mp3_file_paths.txt"
 
+
+  #
+  #sudo mkdir /mnt/h
+  #sudo mkdir /mnt/g
+  #sudo mount -t vboxsf h_drive /mnt/h
+  #sudo mount -t vboxsf g_drive /mnt/g
+  #
   if(!File.exists?(MP3_FILE_PATHS))
     mp3_file_paths = Dir.glob("/mnt/g/**/*.mp3")
     mp3_file_paths << Dir.glob("/mnt/h/**/*.mp3")
@@ -36,21 +43,21 @@ task "songs:createbulk" => :environment  do
         tag = fileref.tag
         properties = fileref.audio_properties
 
-        this_file = file_path << "|"
+        this_file = file_path << "ʘ"
 
         if !tag.nil?
-          this_file << make_safe_field_string(tag.artist) << "|"
-          this_file << make_safe_field_string(tag.title) << "|"
-          this_file << make_safe_field_string(tag.album) << "|"
+          this_file << make_safe_field_string(tag.artist) << "ʘ"
+          this_file << make_safe_field_string(tag.title) << "ʘ"
+          this_file << make_safe_field_string(tag.album) << "ʘ"
 
-          this_file << make_safe_field_number(tag.track) << "|"
+          this_file << make_safe_field_number(tag.track) << "ʘ"
 
-          this_file << make_safe_field_number(properties.length) << "|"
-          this_file << make_safe_field_number(properties.bitrate) << "|"
-          this_file << make_safe_field_number(properties.sample_rate) << "|"
+          this_file << make_safe_field_number(properties.length) << "ʘ"
+          this_file << make_safe_field_number(properties.bitrate) << "ʘ"
+          this_file << make_safe_field_number(properties.sample_rate) << "ʘ"
         end
 
-        this_file << date_now << "|"
+        this_file << date_now << "ʘ"
         this_file << date_now
 
       end  # File is automatically closed at block end
@@ -72,7 +79,7 @@ end
 
 def make_safe_field_string(text)
   text = text.to_s[0..254]
-  text = text.gsub(/[\r\n\\\/]/, ",")
+  text = text.gsub(/[\r\n\\\/\|\u0096]/, ", ")
   text
 end
 
@@ -88,7 +95,7 @@ task "songs:importbulk" => :environment  do
   if File.exists?(BULK_TXT_PATH)
     CONN = ActiveRecord::Base.connection
 
-    sql = "copy songs(filepath, artist, title, album, tracknumber, length, bitrate, sample_rate, updated_at, created_at) from '#{BULK_TXT_PATH}' with delimiter '|'"
+    sql = "copy songs(filepath, artist, title, album, tracknumber, length, bitrate, sample_rate, updated_at, created_at) from '#{BULK_TXT_PATH}' with delimiter 'ʘ'"
 
     CONN.execute sql
   end
