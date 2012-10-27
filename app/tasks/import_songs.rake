@@ -51,10 +51,16 @@ task "songs:createbulk" => :environment  do
           this_file << make_safe_field_string(tag.album) << "|"
 
           this_file << make_safe_field_number(tag.track) << "|"
+        else
+          this_file << "|||0|"
+        end
 
+        if !properties.nil?
           this_file << make_safe_field_number(properties.length) << "|"
           this_file << make_safe_field_number(properties.bitrate) << "|"
           this_file << make_safe_field_number(properties.sample_rate) << "|"
+        else
+          this_file << "0|0|0|"
         end
 
         this_file << date_now << "|"
@@ -92,7 +98,7 @@ def make_safe_field_string(text)
 end
 
 def make_safe_field_number(number)
-  number = number.abs
+  number = number.to_i.abs
   number = number / 2147483647
   number.to_s
 end
